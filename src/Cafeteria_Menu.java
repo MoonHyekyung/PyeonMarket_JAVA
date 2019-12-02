@@ -12,7 +12,7 @@ public class Cafeteria_Menu extends JFrame{
 	private JButton Lbtn; // 왼쪽 버튼
 	
 	public Cafeteria_Menu() {
-		setTitle("Cafeteria_Menu");// 프레임 이름 설정
+		setTitle("메뉴");// 프레임 이름 설정
         setSize(1920, 1080);// 프레임 크기 설정
         setLocationRelativeTo(null);//프레임 가운데
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 닫기 창 누를 시 프로그램 종료
@@ -50,9 +50,7 @@ public class Cafeteria_Menu extends JFrame{
 	    Lbtn.setBorderPainted(false); // Lbtn 외각선 색 없게
         Lbtn.setContentAreaFilled(false); // Lbtn 버튼색 없게
         Lbtn.setFocusPainted(false);// Lbtn 선택될 때 테두리 없게
-        
-		
-		
+
 		setResizable(false);
 	    setVisible(true);
 	}
