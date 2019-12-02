@@ -9,7 +9,6 @@ class Way1 extends JPanel {
 	private Way win;
 	
 	public Way1(Way win) {
-		System.out.println("way1");
 		this.win = win;
 		setLayout(null);
 		
