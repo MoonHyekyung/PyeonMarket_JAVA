@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Cafeteria_start extends Java_Cafeteria_main {
+public class Cafeteria_start extends JFrame{
 	private ImageIcon RoadImage; // 불러온 사진 
 	private JLabel Display; // 배경화면 JLabel
 	private Image btnImage; // 버튼 이미지 객체
@@ -11,16 +11,14 @@ public class Cafeteria_start extends Java_Cafeteria_main {
 	private JButton Category;
 	
     Cafeteria_start() {
-//    	
     	setTitle("사용 시작");// 프레임 이름 설정
         setSize(1920, 1080);// 프레임 크기 설정
         setLocationRelativeTo(null);//프레임 가운데
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 닫기 창 누를 시 프로그램 종료
         Container board = getContentPane(); // JFrame 위의 컨테이너
         board.setLayout(null);// 컨테이너 board의 배치관리자 삭제
         
       //배경화면 추가 
-        RoadImage = new ImageIcon("images/startBack.jpg"); // 사진 불러오기
+        RoadImage = new ImageIcon("images/BackDisplay.png"); // 사진 불러오기
         Display = new JLabel(RoadImage);//이미지로 변환
 		Display.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 		board.add(Display);
@@ -53,14 +51,14 @@ public class Cafeteria_start extends Java_Cafeteria_main {
 		Category =new JButton(RoadImage); // 이미지 j버튼화
 		Category.setBounds(1000, 200, 600, 660);
 		
-		Category.setBorderPainted(false); // Rbtn 외각선 색 없게
-	    Category.setContentAreaFilled(false); // Rbtn 버튼색 없게
-	    Category.setFocusPainted(false); // Rbtn 선택될 때 테두리 없게
+		Category.setBorderPainted(false); // Category 외각선 색 없게
+	    Category.setContentAreaFilled(false); // Category 버튼색 없게
+	    Category.setFocusPainted(false); // Category 선택될 때 테두리 없게
 	    Display.add(Category);
 	    Category.addActionListener(new ActionListener() {
 		       // Category 버튼이 눌러지면 발생하는 행동을 정의
 		       public void actionPerformed(ActionEvent arg0) {
-		          new Cafeteria_Menu();
+		          new Category();
 		       }            
 		    });
 	    
