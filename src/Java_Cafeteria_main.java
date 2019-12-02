@@ -1,23 +1,31 @@
-import java.awt.Container;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;  //버튼 실행
 import java.awt.event.ActionListener; //버튼 실행
+import java.awt.event.MouseAdapter;
 import java.io.File; //음원 불러오기
 
 import javax.sound.sampled.AudioInputStream; //음악 입력
 import javax.sound.sampled.AudioSystem; //음악 재생
 import javax.sound.sampled.Clip;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+//class DoorEntered extends MouseAdapter { // 마우스가 문위에 올라갔을 때
+//	public void mouseEntered(MouseEvent e) {
+//		int x = e.getX();
+//		int y = e.getY();
+//	}
+//}
+//
 
 public class Java_Cafeteria_main extends JFrame  {
 	private ImageIcon RoadImage; // 불러온 사진 
 	private JLabel Display; // 배경화면 JLabel
 	private Image btImage; // 버튼 이미지 객체
+	private Image image; // 이미지 객체
+	private JLabel DoorLabel; // 마우스 확인하는 문 JLabel
+	private JLabel Welcome; // 어서와 사진 JLabel 
 	private JButton Btn[]; // 사용 시작 버튼배열(사용시작, 이용방법)
 	private Clip clip; // Audio 받아들이는 객체
 	
@@ -26,19 +34,57 @@ public class Java_Cafeteria_main extends JFrame  {
 	        setSize(1920, 1080);// 프레임 크기 설정
 	        setLocationRelativeTo(null);//프레임 가운데
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 닫기 창 누를 시 프로그램 종료
-	        Container board = getContentPane(); // JFrame 위의 컨테이너
-	        board.setLayout(null);// 컨테이너 board의 배치관리자 삭제
+	        setLayout(null);// 컨테이너 board의 배치관리자 삭제
 
-///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// 배경 화면 //////////////////////////////////////////////////
 	        // 배경화면 추가 
-	        RoadImage = new ImageIcon("images/maindisplay.jpg"); // 배경화면 불러오기
+	        RoadImage = new ImageIcon("images/Maindisplay.png"); // 배경화면 불러오기
 	        Display = new JLabel(RoadImage);//이미지 JLabel화
 			Display.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
-			board.add(Display);
+			add(Display);
 	       
+//			// 문에 마우스 올라갔는 지 안 올라 갔는 지 확인하기 위한 문 이미지
+//			RoadImage = new ImageIcon("images/door.png"); // 문이미지 불러오기
+//			image = RoadImage.getImage(); // 이미지 객체에 문 사진 넣기
+//			image = image.getScaledInstance(605,610, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+//			RoadImage.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+//			DoorLabel = new JLabel(RoadImage);
+//			DoorLabel.setBounds(870,385,605,610);
+//			Display.add(DoorLabel);
 			
-			Btn = new JButton[2];
-			
+			// 어서와 쓰레드 넣기
+			RoadImage = new ImageIcon("images/Welcome.png"); // 오른쪽 버튼 사진 불러오기
+			image = RoadImage.getImage(); // 이미지 객체에 right 사진 넣기
+			image = image.getScaledInstance(300,150, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+			RoadImage.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+			Welcome = new JLabel(RoadImage);
+		    Welcome.setBounds(260, 200, 300, 150); //가로위치, 세로위치, 가로크기, 세로크기
+		    Display.add(Welcome);
+		    
+		    class WelcomeThread extends Thread{
+		    	public void run() {
+		    		while(true) {
+		    			Welcome.setVisible(false); // 어서와 사진 안 보이게
+		    			try {
+		    				sleep(500); // 0.5초 지속
+		    			}catch(Exception e) {
+		    				e.printStackTrace();
+		    			}
+		    			Welcome.setVisible(true);	// 어서와 사진 보이게
+		    			try {
+		    				sleep(500); // 0.5초 지속
+		    			}catch(Exception e) {
+		    				e.printStackTrace();
+		    			}
+		    		}
+		    	}
+		    }
+		    
+		    WelcomeThread t = new WelcomeThread();
+		    t.start();
+		    
+///////////////////////////  버튼   /////////////////////////////////////////////			
+			Btn = new JButton[2]; // 왼쪽 버튼, 오른쪽 버튼
 			for(int i =0; i<Btn.length; i++) {
 				switch(i) {
 				case 0: 
@@ -57,7 +103,6 @@ public class Java_Cafeteria_main extends JFrame  {
 				Btn[i].setBorderPainted(false);
 		        Btn[i].setContentAreaFilled(false);
 		        Btn[i].setFocusPainted(false);
-		        Btn[i].setOpaque(false);
 			}
 	        
 	        Btn[0].setBounds(940, 450, 150, 430); //가로위치, 세로위치, 가로크기, 세로크기
@@ -69,15 +114,14 @@ public class Java_Cafeteria_main extends JFrame  {
 	        Btn[0].addActionListener(new ActionListener() {
     	        // "사용시작" 버튼이 눌러지면 발생하는 행동을 정의   
     	        public void actionPerformed(ActionEvent e) {
-    	        	System.out.println("fdjk");
-    	        	board.removeAll();
     	       		new Cafeteria_start();
     	       	}  	          
     	    });
 	        
 	        Btn[1].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					new Cafeteria_way1();
+					// " 이용방법" 버튼이 눌러지면 발생하는 행동을 정의
+					new Way();
 				}
 			});
 	       
@@ -93,7 +137,7 @@ public class Java_Cafeteria_main extends JFrame  {
 			try {
 				AudioInputStream stream = AudioSystem.getAudioInputStream(file);
 				//파일 내에 있는 음악입력
-				clip = AudioSystem.getClip(); // ?
+				clip = AudioSystem.getClip(); // 
 				clip.open(stream);
 				clip.start();
 			} catch(Exception e) {
