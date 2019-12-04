@@ -27,6 +27,7 @@ public class Java_Cafeteria_main extends JFrame  {
 	private JLabel DoorLabel; // 마우스 확인하는 문 JLabel
 	private JLabel Welcome; // 어서와 사진 JLabel 
 	private JButton Btn[]; // 사용 시작 버튼배열(사용시작, 이용방법)
+	private JButton x_B; // x버튼
 	private Clip clip; // Audio 받아들이는 객체
 	
 	Java_Cafeteria_main(){
@@ -42,7 +43,25 @@ public class Java_Cafeteria_main extends JFrame  {
 	        Display = new JLabel(RoadImage);//이미지 JLabel화
 			Display.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 			add(Display);
-	       
+			
+			RoadImage = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
+			image = RoadImage.getImage(); // 이미지 객체에 X 사진 넣기
+			image = image.getScaledInstance(200,200, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+			RoadImage.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+		    x_B =new JButton(RoadImage); // 이미지 j버튼화
+		    x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+		    Display.add(x_B);
+		    
+		    x_B.setBorderPainted(false); //외각선 색 없게
+		    x_B.setContentAreaFilled(false); // 버튼색 없게
+		    x_B.setFocusPainted(false); // 선택될 때 테두리 없게
+		    
+		    
+		    x_B.addActionListener(new ActionListener() {
+		    	public void actionPerformed(ActionEvent arg0) {
+		    		System.exit(0);
+		    	}
+		    });
 //			// 문에 마우스 올라갔는 지 안 올라 갔는 지 확인하기 위한 문 이미지
 //			RoadImage = new ImageIcon("images/door.png"); // 문이미지 불러오기
 //			image = RoadImage.getImage(); // 이미지 객체에 문 사진 넣기
