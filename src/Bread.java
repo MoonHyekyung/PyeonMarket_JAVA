@@ -21,7 +21,7 @@ public class Bread extends JFrame{
 	private JButton honey;
 	private JButton mrcheese;
 	private JButton pizza;
-	private JButton x_B;
+	private JButton x_B; // x
 	
 	private JButton Rbtn; // 오른쪽 버튼
 	private JButton Lbtn; // 왼쪽 버튼
