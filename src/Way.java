@@ -5,6 +5,7 @@ class Way1 extends JPanel {
 	private ImageIcon icon; // 사진 불러오기 변수
 	private JLabel imageLabel; // 배경화면 제이라벨
 	private Image image; // 이미지 객체화
+	private JButton x_B; // x버튼
 	private JButton Rbtn; // 오른쪽 버튼
 	private Way win;
 	
@@ -18,6 +19,24 @@ class Way1 extends JPanel {
 		imageLabel.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 		add(imageLabel);
 		
+		icon = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
+		image = icon.getImage(); // 이미지 객체에 X 사진 넣기
+		image = image.getScaledInstance(200,200, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+		icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+		x_B =new JButton(icon); // 이미지 j버튼화
+		x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+		imageLabel.add(x_B);
+		    
+		x_B.setBorderPainted(false); //외각선 색 없게
+		x_B.setContentAreaFilled(false); // 버튼색 없게
+		x_B.setFocusPainted(false); // 선택될 때 테두리 없게
+		    
+		    
+		x_B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				win.setVisible(false);
+			}
+		});
 		///////////////// 오른쪽 버튼 ////////////////////////////
 		icon = new ImageIcon("images/right.png"); // 오른쪽 버튼 사진 불러오기
 		image = icon.getImage(); // 이미지 객체에 right 사진 넣기
@@ -45,6 +64,7 @@ class Way2 extends JPanel {
 	private ImageIcon icon; // 사진 불러오기 변수
 	private JLabel imageLabel;
 	private Image image; // 이미지 객체화
+	private JButton x_B; // x버튼
 	private JButton Rbtn; // 오른쪽 버튼
 	private JButton Lbtn; // 왼쪽 버튼
 	private Way win;
@@ -58,6 +78,25 @@ class Way2 extends JPanel {
         imageLabel = new JLabel(icon);//이미지로 변환
 		imageLabel.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 		add(imageLabel);
+		
+		icon = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
+		image = icon.getImage(); // 이미지 객체에 X 사진 넣기
+		image = image.getScaledInstance(200,200, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+		icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+		x_B =new JButton(icon); // 이미지 j버튼화
+		x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+		imageLabel.add(x_B);
+		    
+		x_B.setBorderPainted(false); //외각선 색 없게
+		x_B.setContentAreaFilled(false); // 버튼색 없게
+		x_B.setFocusPainted(false); // 선택될 때 테두리 없게
+		    
+		    
+		x_B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				win.setVisible(false);
+			}
+		});
 		
 		/////////////////// 오른쪽 버튼 /////////////////////////
 		icon = new ImageIcon("images/right.png"); // 오른쪽 버튼 사진 불러오기
@@ -106,6 +145,7 @@ class Way3 extends JPanel {
 	private ImageIcon icon; // 사진 불러오기 변수
 	private JLabel imageLabel; // 배경화면 JLabel
 	private Image image; // 이미지 객체화
+	private JButton x_B; // x버튼 
 	private JButton Lbtn; // 왼쪽 버튼
 	private Way win;
 	
@@ -118,6 +158,26 @@ class Way3 extends JPanel {
         imageLabel = new JLabel(icon);//이미지로 변환
 		imageLabel.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 		add(imageLabel);
+		
+		// x버튼 추가
+		icon = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
+		image = icon.getImage(); // 이미지 객체에 X 사진 넣기
+		image = image.getScaledInstance(200,200, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+		icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+		x_B =new JButton(icon); // 이미지 j버튼화
+		x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+		imageLabel.add(x_B);
+		    
+		x_B.setBorderPainted(false); //외각선 색 없게
+		x_B.setContentAreaFilled(false); // 버튼색 없게
+		x_B.setFocusPainted(false); // 선택될 때 테두리 없게
+		    
+		    
+		x_B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				win.setVisible(false);
+			}
+		});
 		
 		 ///////////////// 왼쪽 버튼//////////////////////////////////////////////
 	    icon = new ImageIcon("images/left.png"); // 사진 불러오기

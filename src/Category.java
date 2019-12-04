@@ -9,6 +9,7 @@ public class Category extends JFrame{
 	private Image image; // Choose 이미지 객체
 	private Image btnImage; // 버튼 이미지 객체
 	private JLabel Choose; // 놀러와 JLabel 객체
+	private JButton x_B; // x버튼
 	
 	private JButton Bread; // 빵 버튼
 	private JButton Snack; // 과자 버튼
@@ -28,6 +29,25 @@ public class Category extends JFrame{
 		Display.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 		add(Display);
 		
+		// x 버튼
+		RoadImage = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
+		image = RoadImage.getImage(); // 이미지 객체에 X 사진 넣기
+		image = image.getScaledInstance(200,200, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
+		RoadImage.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
+	    x_B =new JButton(RoadImage); // 이미지 j버튼화
+	    x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+	    Display.add(x_B);
+	    
+	    x_B.setBorderPainted(false); //외각선 색 없게
+	    x_B.setContentAreaFilled(false); // 버튼색 없게
+	    x_B.setFocusPainted(false); // 선택될 때 테두리 없게
+	    
+	    
+	    x_B.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent arg0) {
+	    		setVisible(false);
+	    	}
+	    });
 		// 골라봐 사진 & 쓰레드 넣기
 		RoadImage = new ImageIcon("images/Choose.png");
 		image = RoadImage.getImage(); // 이미지 객체화

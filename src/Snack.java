@@ -64,7 +64,7 @@ class Snack1 extends JPanel {
 	    Menu_Image.add(Rbtn);
 	    
 	    //Gosomi
-	    icon = new ImageIcon("images/Gosomi.png"); // 오른쪽 버튼 사진 불러오기
+	    icon = new ImageIcon("images/Snack/Gosomi.png"); // 오른쪽 버튼 사진 불러오기
 		image = icon.getImage(); // 이미지 객체에 right 사진 넣기
 		image = image.getScaledInstance(200,300, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
 		icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
