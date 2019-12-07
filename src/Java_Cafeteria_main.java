@@ -39,7 +39,7 @@ public class Java_Cafeteria_main extends JFrame  {
 
 ///////////////////////////////// 배경 화면 //////////////////////////////////////////////////
 	        // 배경화면 추가 
-	        RoadImage = new ImageIcon("images/Maindisplay.png"); // 배경화면 불러오기
+	        RoadImage = new ImageIcon("images/Maindisplay_open.png"); // 배경화면 불러오기
 	        Display = new JLabel(RoadImage);//이미지 JLabel화
 			Display.setBounds(0,0,1920,1080); //가로위치, 세로위치, 가로크기, 세로크기
 			add(Display);
@@ -62,14 +62,6 @@ public class Java_Cafeteria_main extends JFrame  {
 		    		System.exit(0);
 		    	}
 		    });
-//			// 문에 마우스 올라갔는 지 안 올라 갔는 지 확인하기 위한 문 이미지
-//			RoadImage = new ImageIcon("images/door.png"); // 문이미지 불러오기
-//			image = RoadImage.getImage(); // 이미지 객체에 문 사진 넣기
-//			image = image.getScaledInstance(605,610, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
-//			RoadImage.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
-//			DoorLabel = new JLabel(RoadImage);
-//			DoorLabel.setBounds(870,385,605,610);
-//			Display.add(DoorLabel);
 			
 			// 어서와 쓰레드 넣기
 			RoadImage = new ImageIcon("images/Welcome.png"); // 오른쪽 버튼 사진 불러오기
@@ -124,8 +116,8 @@ public class Java_Cafeteria_main extends JFrame  {
 		        Btn[i].setFocusPainted(false);
 			}
 	        
-	        Btn[0].setBounds(940, 450, 150, 430); //가로위치, 세로위치, 가로크기, 세로크기
-	        Btn[1].setBounds(1240, 455, 150, 430 ); //가로위치, 세로위치, 가로크기, 세로크기
+	        Btn[0].setBounds(940, 400, 150, 430); //가로위치, 세로위치, 가로크기, 세로크기
+	        Btn[1].setBounds(1240, 405, 150, 430 ); //가로위치, 세로위치, 가로크기, 세로크기
 	      
 	        //버튼추가
 	        for(JButton b : Btn) Display.add(b);
