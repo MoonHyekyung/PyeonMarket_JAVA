@@ -55,7 +55,7 @@ class Etc1 extends JPanel{
         }); // addActionListener
 	    
 	    // 메뉴 버튼들
-	    Etcbtn = new JButton[37];
+	    Etcbtn = new JButton[12];
 	    
 	    EtcList = new ArrayList<String>();
 	    EtcList.add("images/Etc/Abc.jpg"); // ABC 초콜릿
@@ -120,7 +120,7 @@ class Etc2 extends JPanel  {
 		});
 		
 		// 메뉴 버튼들
-		Etcbtn = new JButton[37];
+		Etcbtn = new JButton[12];
 		    
 		EtcList = new ArrayList<String>();
 		EtcList.add("images/Etc/zzang.png"); // 짱셔요 과일
@@ -184,7 +184,7 @@ class Etc3 extends JPanel {
 		});
 		
 		// 메뉴 버튼들
-		Etcbtn = new JButton[37];
+		Etcbtn = new JButton[12];
 		    
 		EtcList = new ArrayList<String>();
 		EtcList.add("images/Etc/Hotbreak.jpg"); // 핫브레이크
@@ -252,7 +252,7 @@ class Etc4 extends JPanel {
         });
 		
 		// 메뉴 버튼들
-		Etcbtn = new JButton[37];
+		Etcbtn = new JButton[5];
 		    
 		EtcList = new ArrayList<String>();
 		EtcList.add("images/Etc/Sinjjolyi_Apple.jpg"); // 핫브레이크
@@ -262,8 +262,8 @@ class Etc4 extends JPanel {
 		EtcList.add("images/Etc/Viyott_Choco.png"); // 하리보 미니
 		
 		win.AddBtn(EtcList, Etcbtn, menu_Image);
-	}
-}
+	} // Etc4 생성자
+} // Etc4
 
 public class Etc extends JFrame {
 	private ImageIcon icon; // 불러온 이미지
@@ -286,7 +286,7 @@ public class Etc extends JFrame {
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(1920,1080);
 		setVisible(true);
-	}
+	} // Etc 생성자
 	
 	public void Change(String panelName) {
 		switch(panelName) {
@@ -313,8 +313,8 @@ public class Etc extends JFrame {
 			getContentPane().add(etc4);
 			revalidate();
 			repaint();
-		}
-	}
+		} // switch
+	} // Change
 	public void AddXbtn(JButton x_B, JLabel menu_Image) {
 		// x버튼
 	    icon = new ImageIcon("images/x.png"); // X 버튼 사진 불러오기
@@ -357,7 +357,7 @@ public class Etc extends JFrame {
 
 		//버튼추가
 		for(JButton b : btn) menu_Image.add(b);
-	}
+	} // AddR_LBtn
 	
 	public void AddBtn(ArrayList<String> EtcList, JButton Etcbtn[], JLabel menu_Image) {
 	    int i = 0, chk = 1;
@@ -377,10 +377,10 @@ public class Etc extends JFrame {
 		    if(chk!=24 && chk!=36 && chk % 6 == 0) {  // 두번째 줄로 내리기
 		    	y += 300;
 		    	x = -60; // 밑에서 260을 더할 것이기 때문
-		    }
+		    } // if
 		    i++;
 		    chk++;
 		    x += 260;
-	    }
-	}
-}
+	    } // for
+	} // AddBtn
+} 
