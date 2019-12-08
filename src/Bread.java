@@ -16,8 +16,9 @@ public class Bread extends JFrame{
 	private JButton Breadbtn[]; //빵메뉴 버튼
 	
 	private JButton x_B; // x버튼
-	
+	private static int j; // 버튼 actionlistener 방번호
 	public Bread() {
+		setTitle("빵");
 		setLayout(null);
 		setSize(1920,1080);
 		setVisible(true);
@@ -37,7 +38,7 @@ public class Bread extends JFrame{
 		image = image.getScaledInstance(290,290, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
 		icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
 	   
-	    // 메뉴 버튼들
+	    // 메뉴 버튼들 추가
 		Breadbtn = new JButton[12];
 	    
 		BreadList = new ArrayList<String>();
@@ -72,21 +73,23 @@ public class Bread extends JFrame{
 	    	} // actionPerformed
 	    }); // addActionListener
 	}
-	public void AddBtn(ArrayList<String> EtcList, JButton Etcbtn[], JLabel menu_Image) {
+	public void AddBtn(ArrayList<String> List, JButton btn[], JLabel menu_Image) {
 	    int i = 0, chk = 1;
 	    int x = 280, y = 410, width = 300, height = 300;
-	    for(String etc: EtcList) { // 향상된 for문
+	    for(String etc: List) { // 향상된 for문
 	    	icon = new ImageIcon(etc); // 사진 불러오기
 	    	image = icon.getImage(); // 이미지 객체에 사진 넣기
 	    	image = image.getScaledInstance(300,300, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
 		    icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
-		    Etcbtn[i] = new JButton(icon); // 이미지 j버튼화
-		    Etcbtn[i].setBounds(x,y,width,height);
-		    menu_Image.add(Etcbtn[i]);
-		    		
-		    Etcbtn[i].setBorderPainted(false); // 버튼 외각선 색 없게
-		    Etcbtn[i].setContentAreaFilled(false); //  버튼색 없게
-		    Etcbtn[i].setFocusPainted(false); // 버튼 선택될 때 테두리 없게
+		    btn[i] = new JButton(icon); // 이미지 j버튼화
+		    btn[i].setBounds(x,y,width,height);
+		    menu_Image.add(btn[i]);
+		    
+		    btn[i].addActionListener(new BtnActionListener(i)); // action리스너
+		    
+		    btn[i].setBorderPainted(false); // 버튼 외각선 색 없게
+		    btn[i].setContentAreaFilled(false); //  버튼색 없게
+		    btn[i].setFocusPainted(false); // 버튼 선택될 때 테두리 없게
 		    if(chk % 4 == 0) {  // 두번째 줄로 내리기
 		    	y += 300;
 		    	x = -100; // 밑에서 370을 더할 것이기 때문에 첫시작을 270으로 하고싶어서
@@ -96,4 +99,16 @@ public class Bread extends JFrame{
 		    x += 370;
 	    } // for
 	} // AddBtn
+	
+	private class BtnActionListener implements ActionListener {
+        private int btn;
+
+        public BtnActionListener(int btn) {
+            this.btn = btn;
+        } // BtnActionListener
+
+        public void actionPerformed(ActionEvent e) {
+        	new BreadInfo(btn);
+        } // actionPerformed
+    } // BtnActionListener
 }
