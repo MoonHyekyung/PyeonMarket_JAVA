@@ -11,14 +11,6 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-//class DoorEntered extends MouseAdapter { // 마우스가 문위에 올라갔을 때
-//	public void mouseEntered(MouseEvent e) {
-//		int x = e.getX();
-//		int y = e.getY();
-//	}
-//}
-//
-
 public class Java_Cafeteria_main extends JFrame  {
 	private ImageIcon RoadImage; // 불러온 사진 
 	private JLabel Display; // 배경화면 JLabel
@@ -135,9 +127,8 @@ public class Java_Cafeteria_main extends JFrame  {
 					new Way();
 				}
 			});
-	       
-	        PlayMusic("music/Start.wav");
 	        
+	        PlayMusic("music/Start.wav");
 	        
 	        setVisible(true);		
 		}
@@ -151,6 +142,7 @@ public class Java_Cafeteria_main extends JFrame  {
 				clip = AudioSystem.getClip(); // 
 				clip.open(stream);
 				clip.start();
+				clip.loop(3);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
