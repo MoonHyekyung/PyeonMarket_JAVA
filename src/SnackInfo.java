@@ -120,6 +120,9 @@ public class SnackInfo extends JFrame{
 			break;
 		case 2: 
 			SnackInfo2 s2 = new SnackInfo2(this,j);
+			break;
+		case 3: 
+			SnackInfo3 s3 = new SnackInfo3(this,j);
 		}
 	} // Etc생성자
 
@@ -129,7 +132,7 @@ public class SnackInfo extends JFrame{
 		image = icon.getImage(); // 이미지 객체에 X 사진 넣기
 		icon.setImage(image.getScaledInstance(200,200, Image.SCALE_SMOOTH)); // 사이즈 조절한거 다시 이미지에 넣기
 	    x_B =new JButton(icon); // 이미지 j버튼화
-	    x_B.setBounds(1720,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
+	    x_B.setBounds(1700,20, 200, 200); //가로위치, 세로위치, 가로크기, 세로크기
 	    menu_Image.add(x_B);
 	    
 	    x_B.setBorderPainted(false); //외각선 색 없게
