@@ -12,7 +12,7 @@ class IceCream1 extends JPanel {
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
 	private ArrayList<String> IceCreamList; // IceCreamList
-	private JButton Etcbtn[];
+	private JButton IceCreambtn[]; // 아이스크림 메뉴 버튼
 	
 	private JButton x_B;
 	private JButton Rbtn; // 오른쪽 버튼
@@ -52,7 +52,7 @@ class IceCream1 extends JPanel {
         }); // addActionListener
 	    
 	    // 메뉴 버튼들
-	    Etcbtn = new JButton[20];
+	    IceCreambtn = new JButton[20];
 	    
 	    IceCreamList = new ArrayList<String>();
 	    IceCreamList.add("images/IceCream/candybar.png"); // 캔디바
@@ -76,7 +76,7 @@ class IceCream1 extends JPanel {
 	    IceCreamList.add("images/IceCream/plain.png"); // 캔디바
 	    IceCreamList.add("images/IceCream/star.png"); // 슈팅스타
 	    
-	    win.AddBtn(IceCreamList, Etcbtn, menu_Image);
+	    win.AddBtn(IceCreamList, IceCreambtn, menu_Image);
 	} // IceCream1 생성자
 } // IceCream1
 
@@ -85,7 +85,7 @@ class IceCream2 extends JPanel {
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
 	private ArrayList<String> IceCreamList; // IceCreamList
-	private JButton Etcbtn[];
+	private JButton IceCreambtn[];
 	private IceCream win; // IceCream2를 더할 프레임위치 클래스
 	
 	private JButton x_B;
@@ -125,7 +125,7 @@ class IceCream2 extends JPanel {
         });
 		
 		// 메뉴 버튼들
-		Etcbtn = new JButton[5];
+        IceCreambtn = new JButton[5];
 		    
 		IceCreamList = new ArrayList<String>();
 		IceCreamList.add("images/IceCream/world.png"); // 월드콘
@@ -134,7 +134,7 @@ class IceCream2 extends JPanel {
 		IceCreamList.add("images/IceCream/supercon.png"); // 슈퍼콘 바닐라
 		IceCreamList.add("images/IceCream/supercon_straw.png"); // 부라보 딸기
 		
-		win.AddBtn(IceCreamList, Etcbtn, menu_Image);
+		win.AddBtn(IceCreamList, IceCreambtn, menu_Image);
 	} // icecream2 생성자
 } // IceCream2
 
@@ -152,7 +152,6 @@ public class IceCream extends JFrame{
 	    setLocationRelativeTo(null);//프레임 가운데
 	    add(this.icecream1);
 	    
-	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(1920,1080);
 		setVisible(true);
 	} // Etc 생성자
@@ -187,7 +186,6 @@ public class IceCream extends JFrame{
 	    
 	    x_B.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent arg0) {
-	    		System.exit(0);
 	    		setVisible(false);
 	    	} // actionPerformed
 	    }); // addActionListener
