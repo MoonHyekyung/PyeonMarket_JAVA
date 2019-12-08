@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Container;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,6 +16,7 @@ class Drink1 extends JPanel {
 	private JButton x_B;
 	private JButton Rbtn; // 오른쪽 버튼
 	private Drink win;
+	private final int ObjChk = 1; // 어떤 클래스인지 확인하기 위한 변수
 	
 	public Drink1(Drink win) {
 		this.win = win;
@@ -69,7 +68,7 @@ class Drink1 extends JPanel {
 	    DrinkLIst.add("images/Drink/musket.jpg"); // 청포도 드링크
 	    DrinkLIst.add("images/Drink/berry.jpg"); // 석류 드링크
 	   
-	    win.AddBtn(DrinkLIst, Drinkbtn, menu_Image);
+	    win.AddBtn(DrinkLIst, Drinkbtn, menu_Image, ObjChk);
 	} // drink1 생성자
 } // drink1
 
@@ -83,7 +82,8 @@ class Drink2 extends JPanel {
 	private JButton x_B;
 	private JButton Lbtn; // 왼쪽 버튼
 	private Drink win;
-	
+	private final int ObjChk = 2; // 어떤 클래스인지 확인하기 위한 변수
+
 	public Drink2(Drink win) {
 		this.win = win;
 		setLayout(null);
@@ -130,7 +130,7 @@ class Drink2 extends JPanel {
 	    DrinkLIst.add("images/Drink/Cornsuyum.jpg"); // 옥수수수염차
 	    DrinkLIst.add("images/Drink/Water.jpg"); // 물
 	    
-	    win.AddBtn(DrinkLIst, Drinkbtn, menu_Image);
+	    win.AddBtn(DrinkLIst, Drinkbtn, menu_Image, ObjChk);
 	} // drink2 생성자
 } // drink2
 
@@ -212,21 +212,23 @@ public class Drink extends JFrame{
 		for(JButton b : btn) menu_Image.add(b);
 	} // AddR_LBtn
 	
-	public void AddBtn(ArrayList<String> EtcList, JButton Etcbtn[], JLabel menu_Image) {
+	public void AddBtn(ArrayList<String> List, JButton btn[], JLabel menu_Image, int ObjChk) {
 	    int i = 0, chk = 1;
 	    int x = 200, y = 450, width = 250, height = 250;
-	    for(String etc: EtcList) { // 향상된 for문
+	    for(String etc: List) { // 향상된 for문
 	    	icon = new ImageIcon(etc); // 사진 불러오기
 	    	image = icon.getImage(); // 이미지 객체에 사진 넣기
 	    	image = image.getScaledInstance(250,250, Image.SCALE_SMOOTH); // 객체 사이즈 조절하기
 		    icon.setImage(image); //사이즈 조절한거 다시 이미지에 넣기
-		    Etcbtn[i] = new JButton(icon); // 이미지 j버튼화
-		    Etcbtn[i].setBounds(x,y,width,height);
-		    menu_Image.add(Etcbtn[i]);
-		    		
-		    Etcbtn[i].setBorderPainted(false); // 버튼 외각선 색 없게
-		    Etcbtn[i].setContentAreaFilled(false); //  버튼색 없게
-		    Etcbtn[i].setFocusPainted(false); // 버튼 선택될 때 테두리 없게
+		    btn[i] = new JButton(icon); // 이미지 j버튼화
+		    btn[i].setBounds(x,y,width,height);
+		    menu_Image.add(btn[i]);
+		    
+		    btn[i].addActionListener(new BtnActionListener(i, ObjChk)); // action리스너
+		    
+		    btn[i].setBorderPainted(false); // 버튼 외각선 색 없게
+		    btn[i].setContentAreaFilled(false); //  버튼색 없게
+		    btn[i].setFocusPainted(false); // 버튼 선택될 때 테두리 없게
 		    if(chk!=24 && chk!=36 && chk % 6 == 0) {  // 두번째 줄로 내리기
 		    	y += 300;
 		    	x = -60; // 밑에서 260을 더할 것이기 때문
@@ -236,4 +238,18 @@ public class Drink extends JFrame{
 		    x += 260;
 	    } // for
 	} // AddBtn
+	
+	private class BtnActionListener implements ActionListener {
+        private int btn;
+        private int ObjChk;
+
+        public BtnActionListener(int btn, int ObjChk) {
+            this.btn = btn;
+            this.ObjChk = ObjChk;
+        } // BtnActionListener
+
+        public void actionPerformed(ActionEvent e) {
+        	new DrinkInfo(btn, ObjChk);
+        } // actionPerformed
+    } // BtnActionListener
 } // Drink
