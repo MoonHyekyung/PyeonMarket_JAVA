@@ -13,8 +13,7 @@ class Etc1 extends JPanel{
 	private ImageIcon icon; // 사진 불러오기 변수
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
-	private ArrayList<String> EtcList; // Etc 사진  새콤짱딸기, 새콤짱 사과, 짱셔요 과일, 짱셔요 콜라
-	private ArrayList<String> EtcInfoList; // Etc 정보사진
+	private ArrayList<String> EtcList; // EtcList
 	private JButton Etcbtn[];
 	
 	private JButton x_B;
@@ -73,7 +72,6 @@ class Etc1 extends JPanel{
 	    
 	    win.AddBtn(EtcList, Etcbtn, menu_Image);
 	} // Etc1 생성자
-
 } // Etc1
 
 /////////////// class Etc2
@@ -82,7 +80,6 @@ class Etc2 extends JPanel  {
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
 	private ArrayList<String> EtcList; // Etc 사진  새콤짱딸기, 새콤짱 사과, 짱셔요 과일, 짱셔요 콜라
-	private ArrayList<String> EtcInfoList; // Etc 정보사진
 	private JButton Etcbtn[];
 	private Etc win; // Snack1을 더할 프레임위치 클래스
 	
@@ -146,7 +143,6 @@ class Etc3 extends JPanel {
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
 	private ArrayList<String> EtcList; // Etc 사진  새콤짱딸기, 새콤짱 사과, 짱셔요 과일, 짱셔요 콜라
-	private ArrayList<String> EtcInfoList; // Etc 정보사진
 	private JButton Etcbtn[];
 	private Etc win; // Snack1을 더할 프레임위치 클래스
 	
@@ -210,7 +206,6 @@ class Etc4 extends JPanel {
 	private Image image; // 이미지 객체화
 	private JLabel menu_Image; // menu 배경화면
 	private ArrayList<String> EtcList; // Etc 사진  새콤짱딸기, 새콤짱 사과, 짱셔요 과일, 짱셔요 콜라
-	private ArrayList<String> EtcInfoList; // Etc 정보사진
 	private JButton Etcbtn[];
 	private Etc win; // Snack1을 더할 프레임위치 클래스
 	
@@ -283,7 +278,6 @@ public class Etc extends JFrame {
 	    setLocationRelativeTo(null);//프레임 가운데
 	    add(this.etc1);
 	    
-	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(1920,1080);
 		setVisible(true);
 	} // Etc 생성자
@@ -330,7 +324,6 @@ public class Etc extends JFrame {
 	    
 	    x_B.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent arg0) {
-	    		System.exit(0);
 	    		setVisible(false);
 	    	} // actionPerformed
 	    }); // addActionListener
